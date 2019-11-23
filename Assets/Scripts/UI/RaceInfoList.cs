@@ -13,11 +13,6 @@ namespace Plarium.Gamejam2019
 
         [SerializeField] private RaceInfo _raceInfoPrefab;
 
-        private void Awake()
-        {
-            //_raceInfos = new List<RaceInfo>();
-        }
-
         public void StepUpdate()
         {
             foreach (var raceInfo in _raceInfos)
@@ -32,6 +27,13 @@ namespace Plarium.Gamejam2019
             raceInfo.SetSprite(raceOnPlanet.Race.InfoSprite);
             raceInfo.RaceOnPlanet = raceOnPlanet;
             _raceInfos.Add(raceInfo);
+        }
+
+        public void RemoveRace(RaceOnPlanet raceOnPlanet)
+        {
+            var raceInfo = _raceInfos.Find(e => e.RaceOnPlanet == raceOnPlanet);
+            _raceInfos.Remove(raceInfo);
+            Destroy(raceInfo.gameObject);
         }
     }
 }

@@ -16,10 +16,20 @@ namespace Plarium.Gamejam2019
         public void AddPopulation(int value)
         {
             _population += value;
+            if (_population < 0)
+            {
+                Die();
+            }
             if (_population > 100)
             {
                 _population = 100;
             }
+            
+        }
+
+        public void Die()
+        {
+            GameController.Instance.RemoveRace(this);
         }
     }
 }

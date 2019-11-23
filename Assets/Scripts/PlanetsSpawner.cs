@@ -29,7 +29,7 @@ namespace Plarium.Gamejam2019
             var position = Random.insideUnitCircle.normalized * _spawnRaduis;
             var planet = Instantiate(_planetPrefab, position, Quaternion.identity);
             var direction = -position.normalized;
-            planet.Initialize(sprite, direction, speed);
+            //planet.Initialize(sprite, direction, speed);
             GameController.Instance.AddPlanet(planet);
         }
         

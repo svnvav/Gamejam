@@ -24,25 +24,33 @@ namespace Plarium.Gamejam2019
         private Planet _source;
         private int _raceIndexOnSourcePlanet;
         private Planet _destination;
+
+        private int _starsLeft;
         
         private List<RaceOnPlanet> _races;
         public List<RaceOnPlanet> Races => _races;
         
         private void Awake()
         {
+            _races = new List<RaceOnPlanet>();
             Instance = this;
             _currentScenarioItemIndex = 0;
+            _starsLeft = 4;
         }
 
         private void Update()
         {
-            _scenarioProgress += Time.deltaTime * _gameSpeed;
-            while (_scenarioProgress > _scenario.Items[_currentScenarioItemIndex].delay)
+            if (_currentScenarioItemIndex < _scenario.Items.Length)
             {
-                _scenarioProgress -= _scenario.Items[_currentScenarioItemIndex].delay;
-                AddPlanet(_scenario.Items[_currentScenarioItemIndex].planet);
+                _scenarioProgress += Time.deltaTime * _gameSpeed;
+                while (_currentScenarioItemIndex < _scenario.Items.Length && _scenarioProgress > _scenario.Items[_currentScenarioItemIndex].delay)
+                {
+                    _scenarioProgress -= _scenario.Items[_currentScenarioItemIndex].delay;
+                    AddPlanet(_scenario.Items[_currentScenarioItemIndex].planet);
+                    _currentScenarioItemIndex++;
+                }
             }
-            
+
             _stepProgress += Time.deltaTime * _gameSpeed;
             while (_stepProgress > 1f)
             {
@@ -112,26 +120,49 @@ namespace Plarium.Gamejam2019
         public void AddPlanet(Planet planet)
         {
             _planets.Add(planet);
+            planet.Initialize(-planet.transform.position.normalized);
             foreach (var raceOnPlanet in planet.Races)
             {
-                _hud.AddRace(raceOnPlanet);
+                AddRace(raceOnPlanet);
             }
         }
 
         public void AddRace(RaceOnPlanet raceOnPlanet)
         {
             _races.Add(raceOnPlanet);
-        }
-
-        public void AddPlanetWithRaces(Planet planet, RaceOnPlanet raceOnPlanet)
-        {
-            
+            _hud.AddRace(raceOnPlanet);
         }
 
         public void RemovePlanet(Planet planet)
         {
+            foreach (var raceOnPlanet in planet.Races)
+            {
+                raceOnPlanet.Die();
+            }
+            
             _planets.Remove(planet);
             Destroy(planet.gameObject);
+        }
+        
+        public void RemoveRace(RaceOnPlanet raceOnPlanet)
+        {
+            _hud.RemoveRace(raceOnPlanet, _starsLeft);
+            _races.Remove(raceOnPlanet);
+            _starsLeft--;
+            if (_starsLeft < 0)
+            {
+                Lose();
+            }
+        }
+
+        public void Lose()
+        {
+            
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
         }
     }
 }

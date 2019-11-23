@@ -27,12 +27,9 @@ namespace Plarium.Gamejam2019
             DetermineState();
         }
 
-        public void Initialize(Sprite sprite, Vector3 direction, float speed)
+        public void Initialize(Vector3 direction)
         {
-            _races = new List<RaceOnPlanet>();
             _direction = direction;
-            _speed = speed;
-            _spriteRenderer.sprite = sprite;
         }
         
         public void GameUpdate()

@@ -5,7 +5,22 @@ namespace Plarium.Gamejam2019
     public class HUD : MonoBehaviour
     {
         [SerializeField] private RaceInfoList _raceInfoList;
+        [SerializeField] private UberStar[] _stars;
+        [SerializeField] private GameObject _veil;
+        [SerializeField] private GameObject _pausePanel;
+        [SerializeField] private GameObject _racePanel;
 
+        public void Pause(bool pause)
+        {
+            _pausePanel.SetActive(pause);
+            _veil.SetActive(pause);
+        }
+
+        public void ShowRacePanel()
+        {
+            
+        }
+        
         public void StepUpdate()
         {
             _raceInfoList.StepUpdate();
@@ -14,6 +29,12 @@ namespace Plarium.Gamejam2019
         public void AddRace(RaceOnPlanet raceOnPlanet)
         {
             _raceInfoList.AddRace(raceOnPlanet);
+        }
+        
+        public void RemoveRace(RaceOnPlanet raceOnPlanet, int index)
+        {
+            _raceInfoList.RemoveRace(raceOnPlanet);
+            _stars[index].Fade();
         }
     }
 }
