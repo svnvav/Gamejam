@@ -59,7 +59,6 @@ namespace Plarium.Gamejam2019
         {
             _paused = !_paused;
             Time.timeScale = _paused ? 0f : 1f;
-            _hud.Pause(_paused);
         }
 
         private void Update()
@@ -69,6 +68,7 @@ namespace Plarium.Gamejam2019
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 OnPause();
+                _hud.Pause(_paused);
             }
             
             if (_currentScenarioItemIndex < _scenario.Items.Length)
@@ -161,6 +161,7 @@ namespace Plarium.Gamejam2019
         public void AddRace(RaceOnPlanet raceOnPlanet)
         {
             _races.Add(raceOnPlanet);
+            _began = false;
             _hud.AddRace(raceOnPlanet);
         }
 

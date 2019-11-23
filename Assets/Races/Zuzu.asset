@@ -17,4 +17,5 @@ MonoBehaviour:
   _color: {r: 1, g: 0.92309815, b: 0, a: 0}
   _infoSprite: {fileID: 21300000, guid: b5dae5f9530399f4c8d91a1ae59c6348, type: 3}
   _planetSprite: {fileID: 21300000, guid: d16830024ddde4c4f82b0b30c5565652, type: 3}
+  _helloSprite: {fileID: 21300000, guid: ab259e5261e47974f9d2c851fb926c1c, type: 3}
   _influences: []

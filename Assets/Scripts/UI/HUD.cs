@@ -8,7 +8,7 @@ namespace Plarium.Gamejam2019
         [SerializeField] private UberStar[] _stars;
         [SerializeField] private GameObject _startPanel;
         [SerializeField] private GameObject _pausePanel;
-        [SerializeField] private GameObject _racePanel;
+        [SerializeField] private RacePanel _racePanel;
 
         public void Pause(bool pause)
         {
@@ -22,7 +22,9 @@ namespace Plarium.Gamejam2019
         
         public void ShowRacePanel(Race race)
         {
-            
+            _racePanel.SetText(race.Description);
+            _racePanel.SetFaceImage(race.HelloSprite);
+            _racePanel.Show();
         }
         
         public void StepUpdate()
@@ -33,6 +35,7 @@ namespace Plarium.Gamejam2019
         public void AddRace(RaceOnPlanet raceOnPlanet)
         {
             _raceInfoList.AddRace(raceOnPlanet);
+            ShowRacePanel(raceOnPlanet.Race);
         }
         
         public void RemoveRace(RaceOnPlanet raceOnPlanet, int index)
