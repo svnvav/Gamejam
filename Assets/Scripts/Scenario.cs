@@ -2,7 +2,7 @@
 
 namespace Plarium.Gamejam2019
 {
-    public class HUD : MonoBehaviour
+    public class Scenario : ScriptableObject
     {
         
     }

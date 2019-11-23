@@ -1,18 +1,17 @@
 ﻿
+using System;
 using UnityEngine;
 
 namespace Plarium.Gamejam2019
 {
     public class Dragger : MonoBehaviour
     {
-        [SerializeField] private Planet Planet;
+        [SerializeField] private Planet _planet;
         [SerializeField] private int _index;
-        private void Update()
+
+        private void OnMouseDown()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log(_index);
-            }
+            GameController.Instance.OnPlanetClick(_planet, _index);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Plarium.Gamejam2019
@@ -10,10 +11,20 @@ namespace Plarium.Gamejam2019
         [SerializeField] private float _speed;
         
         [SerializeField] private List<RaceOnPlanet> _races;
+        public List<RaceOnPlanet> Races => _races;
 
-        private Vector3 _direction;
+        [SerializeField] private Transform _leftRacePlaceholder;
+        [SerializeField] private Transform _rightRacePlaceholder;
+        [SerializeField] private GameObject _spritesMask;
+
+        [SerializeField] private Vector3 _direction;
         
         public int RacesCount => _races.Count;
+
+        private void Awake()
+        {
+            DetermineState();
+        }
 
         public void Initialize(Sprite sprite, Vector3 direction, float speed)
         {
@@ -26,6 +37,60 @@ namespace Plarium.Gamejam2019
         public void GameUpdate()
         {
             transform.Translate(_speed * Time.deltaTime * _direction);
+        }
+        
+        public void StepUpdate()
+        {
+            if (_races.Count == 1)
+            {
+                _races[0].AddPopulation(1);
+            }
+            
+        }
+
+        public bool AddRace(RaceOnPlanet raceOnPlanet)
+        {
+            if (_races.Count >= 2) return false;
+            
+            _races.Add(raceOnPlanet);
+            raceOnPlanet.transform.SetParent(_races.Count == 1 ? _leftRacePlaceholder : _rightRacePlaceholder, false);
+            DetermineState();
+            return true;
+        }
+
+        public RaceOnPlanet GetRace(int index)
+        {
+            return _races[index];
+        }
+
+        public void RemoveRace(RaceOnPlanet raceOnPlanet)
+        {
+            _races.Remove(raceOnPlanet);
+            DetermineState();
+        }
+
+        public void RemoveRace(int index)
+        {
+            _races.RemoveAt(index);
+            DetermineState();
+        }
+
+        private void DetermineState()
+        {
+            if (_races.Count == 0)
+            {
+                _spritesMask.SetActive(false);
+            }
+
+            if (_races.Count == 1)
+            {
+                _spritesMask.SetActive(true);
+            }
+            
+            if (_races.Count == 2)
+            {
+                _spritesMask.SetActive(false);
+            }
         }
 
         public void Die()

@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b52bc660df914a36b9f77c4511fdb2cb, type: 3}
-  m_Name: Belorus
+  m_Name: BlackMetallists
   m_EditorClassIdentifier: 
-  _name: "\u0411\u0435\u043B\u043E\u0440\u0443\u0441\u044B"
+  _name: "\u0411\u043B\u044D\u043A \u043C\u0435\u0442\u0430\u043B\u043B\u0438\u0441\u0442\u044B"
   _description: 
-  _color: {r: 0, g: 0, b: 0, a: 0}
+  _color: {r: 0, g: 0, b: 0, a: 1}
   _icon: {fileID: 0}
   _planetSprite: {fileID: 0}
-  _influences: []
+  _influences:
+  - _race: {fileID: 11400000, guid: 6320f23b4bbaa0c41926dac22e310cfa, type: 2}
+    _influenceOnPopulation: -1
