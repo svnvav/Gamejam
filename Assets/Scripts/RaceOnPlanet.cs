@@ -1,7 +1,12 @@
-﻿namespace Plarium.Gamejam2019
+﻿using UnityEngine;
+
+namespace Plarium.Gamejam2019
 {
-    public class RaceOnPlanet
+    public class RaceOnPlanet : MonoBehaviour
     {
+        [SerializeField] private Race _race;
+        public int Population;
+        
         
     }
 }
