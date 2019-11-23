@@ -6,17 +6,21 @@ namespace Plarium.Gamejam2019
     {
         [SerializeField] private RaceInfoList _raceInfoList;
         [SerializeField] private UberStar[] _stars;
-        [SerializeField] private GameObject _veil;
+        [SerializeField] private GameObject _startPanel;
         [SerializeField] private GameObject _pausePanel;
         [SerializeField] private GameObject _racePanel;
 
         public void Pause(bool pause)
         {
             _pausePanel.SetActive(pause);
-            _veil.SetActive(pause);
         }
 
-        public void ShowRacePanel()
+        public void ShowStartPanel()
+        {
+            _startPanel.SetActive(true);
+        }
+        
+        public void ShowRacePanel(Race race)
         {
             
         }

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace Plarium.Gamejam2019
         [SerializeField] private LineRenderer _path;
         [SerializeField] private Scenario _scenario;
         [SerializeField] private float _gameSpeed = 1f;
+        [SerializeField] private GameObject _blackHole;
         
         private float _scenarioProgress;
         private int _currentScenarioItemIndex;
@@ -26,6 +28,9 @@ namespace Plarium.Gamejam2019
         private Planet _destination;
 
         private int _starsLeft;
+
+        private bool _paused;
+        private bool _began;
         
         private List<RaceOnPlanet> _races;
         public List<RaceOnPlanet> Races => _races;
@@ -38,8 +43,34 @@ namespace Plarium.Gamejam2019
             _starsLeft = 4;
         }
 
+        private void Start()
+        {
+            //_hud.ShowStartPanel();
+            Begin();
+        }
+
+        public void Begin()
+        {
+            _began = true;
+            _blackHole.SetActive(true);
+        }
+
+        public void OnPause()
+        {
+            _paused = !_paused;
+            Time.timeScale = _paused ? 0f : 1f;
+            _hud.Pause(_paused);
+        }
+
         private void Update()
         {
+            if(!_began) return;
+            
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OnPause();
+            }
+            
             if (_currentScenarioItemIndex < _scenario.Items.Length)
             {
                 _scenarioProgress += Time.deltaTime * _gameSpeed;
