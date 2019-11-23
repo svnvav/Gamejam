@@ -1,18 +1,11 @@
 ﻿
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+namespace Plarium.Gamejam2019
 {
-    
-    // Start is called before the first frame update
-    void Start()
+    public class GameController : MonoBehaviour
     {
         
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
