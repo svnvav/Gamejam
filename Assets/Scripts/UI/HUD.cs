@@ -10,5 +10,10 @@ namespace Plarium.Gamejam2019
         {
             _raceInfoList.StepUpdate();
         }
+
+        public void AddRace(RaceOnPlanet raceOnPlanet)
+        {
+            _raceInfoList.AddRace(raceOnPlanet);
+        }
     }
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52bc660df914a36b9f77c4511fdb2cb, type: 3}
+  m_Name: Zuzu
+  m_EditorClassIdentifier: 
+  _name: "\u0417\u0443\u0437\u0443"
+  _description: 
+  _color: {r: 1, g: 0.92309815, b: 0, a: 0}
+  _infoSprite: {fileID: 21300000, guid: b5dae5f9530399f4c8d91a1ae59c6348, type: 3}
+  _planetSprite: {fileID: 21300000, guid: d16830024ddde4c4f82b0b30c5565652, type: 3}
+  _influences: []

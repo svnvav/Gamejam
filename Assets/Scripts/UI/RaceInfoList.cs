@@ -11,6 +11,8 @@ namespace Plarium.Gamejam2019
 
         [SerializeField] private List<RaceInfo> _raceInfos;
 
+        [SerializeField] private RaceInfo _raceInfoPrefab;
+
         private void Awake()
         {
             //_raceInfos = new List<RaceInfo>();
@@ -24,10 +26,12 @@ namespace Plarium.Gamejam2019
             }
         }
 
-        public void AddRaceInfo(RaceInfo raceInfo)
+        public void AddRace(RaceOnPlanet raceOnPlanet)
         {
+            var raceInfo = Instantiate(_raceInfoPrefab, transform);
+            raceInfo.SetSprite(raceOnPlanet.Race.InfoSprite);
+            raceInfo.RaceOnPlanet = raceOnPlanet;
             _raceInfos.Add(raceInfo);
-            raceInfo.transform.SetParent(transform);
         }
     }
 }

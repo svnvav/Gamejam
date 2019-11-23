@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1675659180835398556}
   - component: {fileID: 3176103362632904416}
   m_Layer: 0
-  m_Name: BlackMetallists
+  m_Name: Zuzu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2493853288203249705}
-  _race: {fileID: 11400000, guid: 43d3fa2527de12a419cff8896a3c7e1f, type: 2}
+  _race: {fileID: 11400000, guid: 61d80157f32d526478193430c0347760, type: 2}
   _population: 0
 --- !u!1 &2733186599712682393
 GameObject:
@@ -116,7 +116,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 4e369e74ba54bf44a8aadb48bfdeca3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d16830024ddde4c4f82b0b30c5565652, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

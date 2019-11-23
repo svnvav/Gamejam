@@ -4,6 +4,9 @@ namespace Plarium.Gamejam2019
 {
     public class RaceOnPlanet : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+        public SpriteRenderer SpriteRenderer => _spriteRenderer;
+
         [SerializeField] private Race _race;
         public Race Race => _race;
 

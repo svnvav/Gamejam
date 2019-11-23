@@ -14,8 +14,8 @@ namespace Plarium.Gamejam2019
         [SerializeField] private Color _color;
         public Color Color => _color;
         
-        [SerializeField] private Sprite _icon;
-        public Sprite Icon => _icon;
+        [SerializeField] private Sprite _infoSprite;
+        public Sprite InfoSprite => _infoSprite;
 
         [SerializeField] private Sprite _planetSprite;
         public Sprite PlanetSprite => _planetSprite;

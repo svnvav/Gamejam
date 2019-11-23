@@ -12,37 +12,48 @@ namespace Plarium.Gamejam2019
         [SerializeField] private HUD _hud;
         [SerializeField] private PlanetsSpawner _planetsSpawner;
         [SerializeField] private LineRenderer _path;
-
+        [SerializeField] private Scenario _scenario;
         [SerializeField] private float _gameSpeed = 1f;
-        private float _stepProgress = 0f;
-
-        private List<RaceOnPlanet> _races;
-        public List<RaceOnPlanet> Races => _races;
+        
+        private float _scenarioProgress;
+        private int _currentScenarioItemIndex;
 
         [SerializeField] private List<Planet> _planets;
 
+        private float _stepProgress = 0f;
         private Planet _source;
         private int _raceIndexOnSourcePlanet;
         private Planet _destination;
         
+        private List<RaceOnPlanet> _races;
+        public List<RaceOnPlanet> Races => _races;
+        
         private void Awake()
         {
             Instance = this;
+            _currentScenarioItemIndex = 0;
         }
 
         private void Update()
         {
-            _stepProgress += Time.deltaTime;
-            while (_stepProgress > _gameSpeed)
+            _scenarioProgress += Time.deltaTime * _gameSpeed;
+            while (_scenarioProgress > _scenario.Items[_currentScenarioItemIndex].delay)
             {
-                _stepProgress -= _gameSpeed;
+                _scenarioProgress -= _scenario.Items[_currentScenarioItemIndex].delay;
+                AddPlanet(_scenario.Items[_currentScenarioItemIndex].planet);
+            }
+            
+            _stepProgress += Time.deltaTime * _gameSpeed;
+            while (_stepProgress > 1f)
+            {
+                _stepProgress -= 1f;
                 foreach (var planet in _planets)
                 {
                     planet.StepUpdate();
                 }
                 _hud.StepUpdate();
             }
-            
+
             _planetsSpawner.GameUpdate();
             foreach (var planet in _planets)
             {
@@ -101,9 +112,18 @@ namespace Plarium.Gamejam2019
         public void AddPlanet(Planet planet)
         {
             _planets.Add(planet);
+            foreach (var raceOnPlanet in planet.Races)
+            {
+                _hud.AddRace(raceOnPlanet);
+            }
         }
 
-        public void AddPlanetWithRace(Planet planet, RaceOnPlanet raceOnPlanet)
+        public void AddRace(RaceOnPlanet raceOnPlanet)
+        {
+            _races.Add(raceOnPlanet);
+        }
+
+        public void AddPlanetWithRaces(Planet planet, RaceOnPlanet raceOnPlanet)
         {
             
         }

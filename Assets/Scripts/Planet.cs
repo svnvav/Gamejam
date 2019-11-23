@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Plarium.Gamejam2019
@@ -45,7 +46,26 @@ namespace Plarium.Gamejam2019
             {
                 _races[0].AddPopulation(1);
             }
-            
+
+            if (_races.Count == 2)
+            {
+                if (_races[0].Race.Influences.Any(r => r.Race == _races[1].Race))//TODO: optimize
+                {
+                    _races[1].AddPopulation(-1);
+                }
+                else
+                {
+                    _races[1].AddPopulation(1);
+                }
+                if (_races[1].Race.Influences.Any(r => r.Race == _races[0].Race))//TODO: optimize
+                {
+                    _races[0].AddPopulation(-1);
+                }
+                else
+                {
+                    _races[0].AddPopulation(1);
+                }
+            }
         }
 
         public bool AddRace(RaceOnPlanet raceOnPlanet)
@@ -53,7 +73,6 @@ namespace Plarium.Gamejam2019
             if (_races.Count >= 2) return false;
             
             _races.Add(raceOnPlanet);
-            raceOnPlanet.transform.SetParent(_races.Count == 1 ? _leftRacePlaceholder : _rightRacePlaceholder, false);
             DetermineState();
             return true;
         }
@@ -84,12 +103,18 @@ namespace Plarium.Gamejam2019
 
             if (_races.Count == 1)
             {
-                _spritesMask.SetActive(true);
+                _spritesMask.SetActive(false);
+                _races[0].transform.SetParent(_leftRacePlaceholder, false);
+                _races[0].SpriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
             }
             
             if (_races.Count == 2)
             {
-                _spritesMask.SetActive(false);
+                _spritesMask.SetActive(true);
+                _races[0].transform.SetParent(_leftRacePlaceholder, false);
+                _races[0].SpriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+                _races[1].transform.SetParent(_rightRacePlaceholder, false);
+                _races[1].SpriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
             }
         }
 
