@@ -181,7 +181,7 @@ namespace Plarium.Gamejam2019
             planet.Initialize(-planet.transform.position.normalized);
             foreach (var raceOnPlanet in planet.Races)
             {
-                AddRace(raceOnPlanet);
+                StartCoroutine(DelayedRaceAdd(raceOnPlanet, 3f));
             }
         }
 
@@ -190,6 +190,19 @@ namespace Plarium.Gamejam2019
             _races.Add(raceOnPlanet);
             _began = false;
             _hud.AddRace(raceOnPlanet);
+        }
+
+        private IEnumerator DelayedRaceAdd(RaceOnPlanet raceOnPlanet, float delay)
+        {
+            var expired = delay;
+            
+            while (expired > 0f)
+            {
+                if(_began) expired -= Time.deltaTime;
+                yield return null;
+            }
+            
+            AddRace(raceOnPlanet);
         }
 
         public void RemovePlanet(Planet planet)
@@ -204,7 +217,7 @@ namespace Plarium.Gamejam2019
             
             while (expired > 0f)
             {
-                expired -= Time.deltaTime;
+                if(_began) expired -= Time.deltaTime;
                 yield return null;
             }
 
@@ -223,7 +236,7 @@ namespace Plarium.Gamejam2019
             expired = delay2;
             while (expired > 0f)
             {
-                expired -= Time.deltaTime;
+                if(_began) expired -= Time.deltaTime;
                 yield return null;
             }
             

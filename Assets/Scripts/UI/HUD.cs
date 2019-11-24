@@ -9,6 +9,7 @@ namespace Plarium.Gamejam2019
         [SerializeField] private GameObject _startPanel;
         [SerializeField] private GameObject _pausePanel;
         [SerializeField] private RacePanel _racePanel;
+        [SerializeField] private GameObject _loseScreen;
 
         public void Pause(bool pause)
         {
