@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Plarium.Gamejam2019
 {
@@ -14,6 +15,12 @@ namespace Plarium.Gamejam2019
         public void Pause(bool pause)
         {
             _pausePanel.SetActive(pause);
+        }
+
+        public IEnumerator HideStartStory(float delay)
+        {
+            yield return null;
+            _startPanel.SetActive(false);
         }
 
         public void ShowStartPanel()

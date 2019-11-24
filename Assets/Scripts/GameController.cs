@@ -47,13 +47,14 @@ namespace Plarium.Gamejam2019
         private void Start()
         {
             _hud.ShowStartPanel();
-            Begin();
+            //Begin();
         }
 
         public void Begin()
         {
             _began = true;
             _blackHole.SetActive(true);
+            StartCoroutine(_hud.HideStartStory(1f));
         }
 
         public void OnPause()

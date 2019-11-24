@@ -19,4 +19,4 @@ MonoBehaviour:
   _infoSprite: {fileID: 21300000, guid: 61a9b3ef431714e45830df198415fd59, type: 3}
   _planetSprite: {fileID: 21300000, guid: b7ddfe2e45861574b890b71b2a61f053, type: 3}
   _helloSprite: {fileID: 21300000, guid: ee42e4dd45c84a847be241bf2c1201ba, type: 3}
-  _isAngry: 0
+  _isAngry: 1
