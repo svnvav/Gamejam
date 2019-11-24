@@ -46,7 +46,7 @@ namespace Plarium.Gamejam2019
 
         private void Start()
         {
-            //_hud.ShowStartPanel();
+            _hud.ShowStartPanel();
             Begin();
         }
 
@@ -109,6 +109,7 @@ namespace Plarium.Gamejam2019
                 if (hit.collider != null)
                 {
                     var dragger = hit.collider.GetComponent<Dragger>();
+                    if(dragger != null)
                     CapturePlanet(dragger.Planet, dragger.Index);
                 }
             } else if (Input.GetMouseButtonUp(0))
@@ -122,6 +123,12 @@ namespace Plarium.Gamejam2019
                         _destination = dragger.Planet;
                         DeliverRace();
                     }
+                }
+                else
+                {
+                    var nearest = GetNearestPlanet();
+                    _destination = nearest;
+                    DeliverRace();
                 }
                 ClearPath();
             }
@@ -137,25 +144,36 @@ namespace Plarium.Gamejam2019
             }
         }
 
+        private Planet GetNearestPlanet()
+        {
+            Planet pl = null;
+            var minDist = 999f;
+            foreach (var planet in _planets)
+            {
+                var dist =
+                    (TouchPos.x - planet.transform.position.x) * (TouchPos.x - planet.transform.position.x) +
+                    (TouchPos.y - planet.transform.position.y) * (TouchPos.y - planet.transform.position.y);
+                        
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    pl = planet;
+                }
+            }
+
+            if (pl != null && minDist < 6f)
+            {
+                return pl;
+            }
+
+            return pl;
+        }
+        
         public void ClearPath()
         {
             _source = null;
             _raceIndexOnSourcePlanet = 0;
             _path.gameObject.SetActive(false);
-        }
-        
-        public void OnPlanetClick(Planet planet, int raceIndex)
-        {
-            if (_source == null)
-            {
-                CapturePlanet(planet, raceIndex);
-            }
-            else
-            {
-                _destination = planet;
-                DeliverRace();
-                ClearPath();
-            }
         }
 
         private void CapturePlanet(Planet planet, int raceIndex)
@@ -169,7 +187,7 @@ namespace Plarium.Gamejam2019
 
         public void DeliverRace()
         {
-            if(_source == null) return;
+            if(_destination == null || _source == null || _destination.RacesCount >= 2) return;
             var race = _source.GetRace(_raceIndexOnSourcePlanet);
             _source.RemoveRace(_raceIndexOnSourcePlanet);
             _destination.AddRace(race);
@@ -245,7 +263,8 @@ namespace Plarium.Gamejam2019
         
         public void RemoveRace(RaceOnPlanet raceOnPlanet)
         {
-            _hud.RemoveRace(raceOnPlanet, _starsLeft);
+            _hud.RemoveStar(_starsLeft);
+            _hud.RemoveRace(raceOnPlanet);
             _races.Remove(raceOnPlanet);
             _starsLeft--;
             if (_starsLeft < 0)

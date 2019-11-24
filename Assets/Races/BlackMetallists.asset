@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: BlackMetallists
   m_EditorClassIdentifier: 
   _name: "\u0411\u043B\u044D\u043A \u043C\u0435\u0442\u0430\u043B\u043B\u0438\u0441\u0442\u044B"
-  _description: 
+  _description: "\u0429\u0430\u0441 \u043C\u044B \u0440\u043E\u0437\u0431\u0435\u0440\u0435\u043C\u0441\u044F
+    \u043A\u0442\u043E \u0437\u0434\u0435\u0441\u044C \u0442\u0440\u0443\u042A!"
   _color: {r: 0, g: 0, b: 0, a: 1}
   _infoSprite: {fileID: 21300000, guid: 9987705a92243294986a1e31b9522dd3, type: 3}
   _planetSprite: {fileID: 21300000, guid: 45d12349194e853428ce3c564274fb21, type: 3}

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Zuzu
   m_EditorClassIdentifier: 
   _name: "\u0417\u0443\u0437\u0443"
-  _description: 
+  _description: "\u0417\u0430\u0447\u0435\u043C \u043D\u0430\u043A\u0443\u0440\u0438\u0432\u0430\u0442\u044C
+    \u043E\u0441\u0443? \u0417\u0430\u0442\u0435\u043C!"
   _color: {r: 1, g: 0.92309815, b: 0, a: 0}
   _infoSprite: {fileID: 21300000, guid: 61a9b3ef431714e45830df198415fd59, type: 3}
   _planetSprite: {fileID: 21300000, guid: b7ddfe2e45861574b890b71b2a61f053, type: 3}

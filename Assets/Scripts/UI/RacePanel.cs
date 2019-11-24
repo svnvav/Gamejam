@@ -6,9 +6,15 @@ namespace Plarium.Gamejam2019
     public class RacePanel : MonoBehaviour
     {
         [SerializeField] private Text _text;
+        [SerializeField] private Text _name;
         [SerializeField] private Image _image;
         [SerializeField] private Animator _animator;
 
+        public void SetName(string name)
+        {
+            _name.text = name;
+        }
+        
         public void SetText(string text)
         {
             _text.text = text;

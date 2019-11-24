@@ -32,7 +32,9 @@ namespace Plarium.Gamejam2019
         public void RemoveRace(RaceOnPlanet raceOnPlanet)
         {
             var raceInfo = _raceInfos.Find(e => e.RaceOnPlanet == raceOnPlanet);
+            if(raceInfo == null) return;
             _raceInfos.Remove(raceInfo);
+            
             Destroy(raceInfo.gameObject);
         }
     }

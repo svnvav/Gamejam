@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Doshiki
   m_EditorClassIdentifier: 
   _name: "\u0414\u043E\u0448\u0438\u0440\u0430\u043A"
-  _description: 
+  _description: "*\u043F\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0435
+    \u043D\u0430 \u043A\u0438\u0442\u0430\u0439\u0441\u043A\u043E\u043C*"
   _color: {r: 0, g: 0, b: 0, a: 1}
   _infoSprite: {fileID: 21300000, guid: c31d93f7f9a172543b5c146e1f223638, type: 3}
   _planetSprite: {fileID: 21300000, guid: 2592840989038cb4ea86cb8615a113ff, type: 3}

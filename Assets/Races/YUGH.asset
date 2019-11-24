@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: YUGH
   m_EditorClassIdentifier: 
   _name: "\u042A\u0443\u044A"
-  _description: 
+  _description: "\u042A\u0423\u042A \u0421\u041A\u0410"
   _color: {r: 0, g: 0, b: 0, a: 1}
   _infoSprite: {fileID: 21300000, guid: 1c00f3d8dc20e254a99e645feb8401ea, type: 3}
   _planetSprite: {fileID: 21300000, guid: a10ae5933ac2bfd4586cf28d58f1e099, type: 3}

@@ -23,6 +23,7 @@ namespace Plarium.Gamejam2019
         
         public void ShowRacePanel(Race race)
         {
+            _racePanel.SetName(race.Name);
             _racePanel.SetText(race.Description);
             _racePanel.SetFaceImage(race.HelloSprite);
             _racePanel.Show();
@@ -39,9 +40,13 @@ namespace Plarium.Gamejam2019
             ShowRacePanel(raceOnPlanet.Race);
         }
         
-        public void RemoveRace(RaceOnPlanet raceOnPlanet, int index)
+        public void RemoveRace(RaceOnPlanet raceOnPlanet)
         {
             _raceInfoList.RemoveRace(raceOnPlanet);
+        }
+
+        public void RemoveStar(int index)
+        {
             _stars[index].Fade();
         }
 

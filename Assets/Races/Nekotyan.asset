@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nekotyan
   m_EditorClassIdentifier: 
   _name: "\u041D\u0435\u043A\u043E\u0442\u044F\u043D"
-  _description: 
+  _description: "\u041D\u044F \u043D\u044F \u043D\u044F, \u0421\u0435\u043D\u043F\u0430\u0439..."
   _color: {r: 0, g: 0, b: 0, a: 1}
   _infoSprite: {fileID: 21300000, guid: 952a9a04930a31948bcaa937fde576fc, type: 3}
   _planetSprite: {fileID: 21300000, guid: aac5df3835c38764e9d8e2161eed3e9e, type: 3}
