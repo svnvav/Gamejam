@@ -5,16 +5,27 @@ namespace Plarium.Gamejam2019
     public class PlanetsSpawner : MonoBehaviour
     {
         [SerializeField] private Planet _planetPrefab;
-        [SerializeField] private Sprite[] _sprites;
-        [SerializeField] private float _spawnRaduis;
-        [SerializeField] private float _minSpeed;
-        [SerializeField] private float _maxSpeed;
+        [SerializeField] private float _startDelay;
+        [SerializeField] private float _speed;
+        [SerializeField] private float _speedIncreasing;
         [SerializeField] private float _cooldown;
         private float _progress;
+        private bool _started;
         
         public void GameUpdate()
         {
             _progress += Time.deltaTime;
+            if (!_started)
+            {
+                if (_progress >= _startDelay)
+                {
+                    _progress -= _startDelay;
+                    _progress += _cooldown;
+                    _started = true;
+                }
+                return;
+            }
+
             while (_progress >= _cooldown)
             {
                 _progress -= _cooldown;
@@ -24,19 +35,10 @@ namespace Plarium.Gamejam2019
 
         private void Spawn()
         {
-            var sprite = _sprites[Random.Range(0, _sprites.Length)];
-            var speed = Random.Range(_minSpeed, _maxSpeed);
-            var position = Random.insideUnitCircle.normalized * _spawnRaduis;
-            var planet = Instantiate(_planetPrefab, position, Quaternion.identity);
-            var direction = -position.normalized;
-            //planet.Initialize(sprite, direction, speed);
+            var planet = Instantiate(_planetPrefab, transform.position, transform.rotation);
+            planet.Speed = _speed;
+            _speed += _speedIncreasing;
             GameController.Instance.AddPlanet(planet);
-        }
-        
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, _spawnRaduis);
         }
     }
 }

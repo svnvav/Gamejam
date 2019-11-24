@@ -10,7 +10,13 @@ namespace Plarium.Gamejam2019
         [SerializeField] private SpriteRenderer _spriteRenderer;
         
         [SerializeField] private float _speed;
-        
+
+        public float Speed
+        {
+            get => _speed;
+            set => _speed = value;
+        }
+
         [SerializeField] private List<RaceOnPlanet> _races;
         public List<RaceOnPlanet> Races => _races;
 

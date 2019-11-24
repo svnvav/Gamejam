@@ -12,7 +12,7 @@ namespace Plarium.Gamejam2019
         private Vector2 TouchPos => Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         [SerializeField] private HUD _hud;
-        [SerializeField] private PlanetsSpawner _planetsSpawner;
+        [SerializeField] private PlanetsSpawner[] _spawners;
         [SerializeField] private LineRenderer _path;
         [SerializeField] private Scenario _scenario;
         [SerializeField] private float _gameSpeed = 1f;
@@ -94,7 +94,10 @@ namespace Plarium.Gamejam2019
                 _hud.StepUpdate();
             }
 
-            //_planetsSpawner.GameUpdate();
+            foreach (var spawner in _spawners)
+            {
+                spawner.GameUpdate();
+            }
             foreach (var planet in _planets)
             {
                 planet.GameUpdate();
