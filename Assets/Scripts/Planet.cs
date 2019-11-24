@@ -19,6 +19,10 @@ namespace Plarium.Gamejam2019
         [SerializeField] private GameObject _spritesMask;
 
         [SerializeField] private Vector3 _direction;
+
+        [SerializeField] private Animator _animator;
+
+        private bool _dead;
         
         public int RacesCount => _races.Count;
 
@@ -30,11 +34,12 @@ namespace Plarium.Gamejam2019
         public void Initialize(Vector3 direction)
         {
             _direction = direction;
+            _animator.Play("Planet");
         }
         
         public void GameUpdate()
         {
-            transform.Translate(_speed * Time.deltaTime * _direction);
+            transform.position += _speed * Time.deltaTime * _direction;
         }
         
         public void StepUpdate()
@@ -117,7 +122,11 @@ namespace Plarium.Gamejam2019
 
         public void Die()
         {
+            if(_dead) return;
+            _animator.Play("Die");
             GameController.Instance.RemovePlanet(this);
+            _dead = true;
         }
+        
     }
 }

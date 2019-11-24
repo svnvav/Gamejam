@@ -9,9 +9,13 @@ namespace Plarium.Gamejam2019
         [SerializeField] private Planet _planet;
         [SerializeField] private int _index;
 
+        public Planet Planet => _planet;
+
+        public int Index => _index;
+
         private void OnMouseDown()
         {
-            GameController.Instance.OnPlanetClick(_planet, _index);
+            //GameController.Instance.OnPlanetClick(_planet, _index);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -93,12 +94,34 @@ namespace Plarium.Gamejam2019
                 _hud.StepUpdate();
             }
 
-            _planetsSpawner.GameUpdate();
+            //_planetsSpawner.GameUpdate();
             foreach (var planet in _planets)
             {
                 planet.GameUpdate();
             }
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                var hit = Physics2D.Raycast(TouchPos, Vector2.zero);
+                if (hit.collider != null)
+                {
+                    var dragger = hit.collider.GetComponent<Dragger>();
+                    CapturePlanet(dragger.Planet, dragger.Index);
+                }
+            } else if (Input.GetMouseButtonUp(0))
+            {
+                var hit = Physics2D.Raycast(TouchPos, Vector2.zero);
+                if (hit.collider != null)
+                {
+                    var dragger = hit.collider.GetComponent<Dragger>();
+                    if (dragger != null)
+                    {
+                        _destination = dragger.Planet;
+                        DeliverRace();
+                    }
+                }
+                ClearPath();
+            }
             if (Input.GetMouseButtonUp(1))
             {
                 ClearPath();
@@ -143,6 +166,7 @@ namespace Plarium.Gamejam2019
 
         public void DeliverRace()
         {
+            if(_source == null) return;
             var race = _source.GetRace(_raceIndexOnSourcePlanet);
             _source.RemoveRace(_raceIndexOnSourcePlanet);
             _destination.AddRace(race);
@@ -167,12 +191,39 @@ namespace Plarium.Gamejam2019
 
         public void RemovePlanet(Planet planet)
         {
+            
+            StartCoroutine(DalayedPlanetDestroy(planet, 0.5f, 0.2f));
+        }
+
+        private IEnumerator DalayedPlanetDestroy(Planet planet, float delay1, float delay2)
+        {
+            var expired = delay1;
+            
+            while (expired > 0f)
+            {
+                expired -= Time.deltaTime;
+                yield return null;
+            }
+
+            if (_source != null)
+            {
+                ClearPath();
+            }
             foreach (var raceOnPlanet in planet.Races)
             {
                 raceOnPlanet.Die();
             }
             
             _planets.Remove(planet);
+            
+            
+            expired = delay2;
+            while (expired > 0f)
+            {
+                expired -= Time.deltaTime;
+                yield return null;
+            }
+            
             Destroy(planet.gameObject);
         }
         

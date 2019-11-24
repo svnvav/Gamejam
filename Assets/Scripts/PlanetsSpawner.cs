@@ -33,7 +33,7 @@ namespace Plarium.Gamejam2019
             GameController.Instance.AddPlanet(planet);
         }
         
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, _spawnRaduis);
