@@ -23,7 +23,8 @@ namespace Plarium.Gamejam2019
         [SerializeField] private Sprite _helloSprite;
         public Sprite HelloSprite => _helloSprite;
 
-        [SerializeField] private RaceInfluence[] _influences;
-        public RaceInfluence[] Influences => _influences;
+        [SerializeField] private bool _isAngry;
+
+        public bool IsAngry => _isAngry;
     }
 }

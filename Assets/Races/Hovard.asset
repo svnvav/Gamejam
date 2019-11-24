@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52bc660df914a36b9f77c4511fdb2cb, type: 3}
+  m_Name: Hovard
+  m_EditorClassIdentifier: 
+  _name: "\u0422\u043E\u0440\u0433\u043E\u0432\u0446\u044B \u043B\u0443\u0442\u0431\u043E\u043A\u0441\u0430\u043C\u0438"
+  _description: 
+  _color: {r: 0, g: 0, b: 0, a: 1}
+  _infoSprite: {fileID: 21300000, guid: ec266191107552a4a96d0b51c32c6e0f, type: 3}
+  _planetSprite: {fileID: 21300000, guid: af8737f99deaf254c8079369afcdcf20, type: 3}
+  _helloSprite: {fileID: 21300000, guid: a8f9d021dc155b64185182731d635a10, type: 3}
+  _isAngry: 0

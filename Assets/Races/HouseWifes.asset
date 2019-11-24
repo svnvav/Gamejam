@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52bc660df914a36b9f77c4511fdb2cb, type: 3}
+  m_Name: HouseWifes
+  m_EditorClassIdentifier: 
+  _name: "\u0414\u043E\u043C\u043E\u0445\u043E\u0437\u044F\u0439\u043A\u0438"
+  _description: 
+  _color: {r: 0, g: 0, b: 0, a: 1}
+  _infoSprite: {fileID: 21300000, guid: 4816d8687b4beb54aa4ab3f898ddd1e7, type: 3}
+  _planetSprite: {fileID: 21300000, guid: fc168226a193fd546a0322cbebb273ce, type: 3}
+  _helloSprite: {fileID: 21300000, guid: 6e338ae979d959e46aae7fddb41a0fc6, type: 3}
+  _isAngry: 1

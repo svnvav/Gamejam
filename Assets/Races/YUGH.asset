@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52bc660df914a36b9f77c4511fdb2cb, type: 3}
+  m_Name: YUGH
+  m_EditorClassIdentifier: 
+  _name: "\u042A\u0443\u044A"
+  _description: 
+  _color: {r: 0, g: 0, b: 0, a: 1}
+  _infoSprite: {fileID: 21300000, guid: 1c00f3d8dc20e254a99e645feb8401ea, type: 3}
+  _planetSprite: {fileID: 21300000, guid: a10ae5933ac2bfd4586cf28d58f1e099, type: 3}
+  _helloSprite: {fileID: 21300000, guid: 333d564340e4d204d963d01ea9611faf, type: 3}
+  _isAngry: 1

@@ -44,5 +44,10 @@ namespace Plarium.Gamejam2019
             _raceInfoList.RemoveRace(raceOnPlanet);
             _stars[index].Fade();
         }
+
+        public void ShowLoseScreen()
+        {
+            _loseScreen.SetActive(true);
+        }
     }
 }

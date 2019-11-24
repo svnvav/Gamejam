@@ -256,7 +256,8 @@ namespace Plarium.Gamejam2019
 
         public void Lose()
         {
-            
+            _began = false;
+            _hud.ShowLoseScreen();
         }
 
         public void Quit()

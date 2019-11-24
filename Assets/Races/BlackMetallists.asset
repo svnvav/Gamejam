@@ -16,8 +16,6 @@ MonoBehaviour:
   _description: 
   _color: {r: 0, g: 0, b: 0, a: 1}
   _infoSprite: {fileID: 21300000, guid: 9987705a92243294986a1e31b9522dd3, type: 3}
-  _planetSprite: {fileID: 21300000, guid: 4e369e74ba54bf44a8aadb48bfdeca3e, type: 3}
-  _helloSprite: {fileID: 21300000, guid: 3ce1df9c71f6db2419eb740396b4504a, type: 3}
-  _influences:
-  - _race: {fileID: 11400000, guid: 61d80157f32d526478193430c0347760, type: 2}
-    _influenceOnPopulation: -1
+  _planetSprite: {fileID: 21300000, guid: 45d12349194e853428ce3c564274fb21, type: 3}
+  _helloSprite: {fileID: 21300000, guid: e687e68fb17cedd4aa7d2ee7c90297e4, type: 3}
+  _isAngry: 1

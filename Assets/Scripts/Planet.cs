@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Plarium.Gamejam2019
 {
@@ -27,6 +28,10 @@ namespace Plarium.Gamejam2019
         [SerializeField] private Vector3 _direction;
 
         [SerializeField] private Animator _animator;
+
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip[] _holyClips;
+        [SerializeField] private AudioClip[] _fightClips;
 
         private bool _dead;
         
@@ -57,7 +62,7 @@ namespace Plarium.Gamejam2019
 
             if (_races.Count == 2)
             {
-                if (_races[0].Race.Influences.Any(r => r.Race == _races[1].Race))//TODO: optimize
+                if (_races[0].Race.IsAngry)
                 {
                     _races[1].AddPopulation(-1);
                 }
@@ -65,7 +70,7 @@ namespace Plarium.Gamejam2019
                 {
                     _races[1].AddPopulation(1);
                 }
-                if (_races[1].Race.Influences.Any(r => r.Race == _races[0].Race))//TODO: optimize
+                if (_races[1].Race.IsAngry)
                 {
                     _races[0].AddPopulation(-1);
                 }
@@ -123,6 +128,16 @@ namespace Plarium.Gamejam2019
                 _races[0].SpriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
                 _races[1].transform.SetParent(_rightRacePlaceholder, false);
                 _races[1].SpriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+                if (_races[0].Race.IsAngry || _races[1].Race.IsAngry)
+                {
+                    var index = Random.Range(0, _fightClips.Length);
+                    _audioSource.PlayOneShot(_fightClips[index]);
+                }
+                else
+                {
+                    var index = Random.Range(0, _holyClips.Length);
+                    _audioSource.PlayOneShot(_holyClips[index]);
+                }
             }
         }
 
